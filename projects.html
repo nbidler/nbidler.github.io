@@ -1,0 +1,381 @@
+<div class="projects" ng-mousemove="updateBGcolor($event)" style="height: 100vh; width: 100vw; background-color: rgb({{bgRed}},{{bgGrn}},{{bgBlu}});">
+    <header>
+        Nicholas Bidler is a dog
+    </header>
+    <!--<div id="player"></div>-->
+    <div class="row info1">
+        <a data-toggle="modal" data-target="#modal1">
+            <div class="col-sm-2 col-sm-offset-1 info">
+                MBoutique
+            </div>
+        </a>
+        <a data-toggle="modal" data-target="#modal2">
+            <div class="col-sm-2 col-sm-offset-2 info">
+                Guess!
+            </div>
+        </a>
+        <a href="#/main" data-target="#modal3">
+            <div class="col-sm-2 col-sm-offset-2 info">
+                Go Back
+            </div>
+        </a>
+    </div>
+
+    <div class="row info2">
+        <a data-toggle="modal" data-target="#modal4">
+            <div class="col-sm-2 col-sm-offset-1 info">
+                Memory Match
+            </div>
+        </a>
+        <a data-toggle="modal" data-target="#modal5">
+            <div class="col-sm-2 col-sm-offset-2 info">
+                Tic-Tac-Toe
+            </div>
+        </a>
+        <a data-toggle="modal" data-target="#modal6">
+            <div class="col-sm-2 col-sm-offset-2 info">
+                Calculator
+            </div>
+        </a>
+    </div>
+
+    <div class="row info3">
+        <a data-toggle="modal" data-target="#modal7">
+            <div class="col-sm-2 col-sm-offset-1 info">
+                Grade Table
+            </div>
+        </a>
+        <a data-toggle="modal" data-target="#modal8">
+            <div class="col-sm-2 col-sm-offset-2 info">
+                Search Location
+            </div>
+        </a>
+        <a data-toggle="modal" data-target="#modal9">
+            <div class="col-sm-2 col-sm-offset-2 info">
+                Content Management
+            </div>
+        </a>
+    </div>
+
+    <!-- Modal1 -->
+    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel">MBoutique</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="resources/mboutique.png">
+                    <p>A mockup of a website for a fictional business. A design document was presented with instructions,
+                        and the page was then created to meet specifications. The page is also responsive on all screen sizes.</p>
+                    <ul>
+                        <li>Client:
+                            <strong>N/A, personal project
+                            </strong>
+                        </li>
+                        <li>Date:
+                            <strong>March 2016
+                            </strong>
+                        </li>
+                        <li>Service:
+                            <strong>Originally HTML and CSS, remade with javascript, angularJS, angularJS routes, and Bootstrap CSS.
+                            </strong>
+                        </li>
+                        <li>GitHub:
+                            <strong><a href="https://github.com/nbidler/mboutique">https://github.com/nbidler/mboutique.git
+                            </a></strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal2 -->
+    <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel">Guess!</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="resources/guess.png">
+                    <p>A simple high-low guessing game. Initial project causing interaction between javascript, jQuery and the DOM.
+                        In addition to a simple message letting the player know if they're higher or lower than the target number,
+                        the background color and brightness changes based on the distance of the guessed number from the target number.</p>
+                    <ul>
+                        <li>Client:
+                            <strong>N/A, personal project
+                            </strong>
+                        </li>
+                        <li>Date:
+                            <strong>February 2016
+                            </strong>
+                        </li>
+                        <li>Service:
+                            <strong>HTML, CSS, Javascript, jQuery
+                            </strong>
+                        </li>
+                        <li>GitHub:
+                            <strong><a href="https://github.com/nbidler/guess">https://github.com/nbidler/guess.git
+                            </a></strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal3 - currently left in 'in case' -->
+    <!--<div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel">Smells mossy.</h4>
+                </div>
+                <div class="modal-body">
+                    <iframe src="http://www.w3schools.com">
+                        <p>Live demo failed.</p>
+                    </iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!-- Modal4 -->
+    <div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel">Memory Match</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="resources/memory.png">
+                    <p>A simple card-matching game with 9 matchable pairs of cards, game reset button, dynamically updated stats based on user actions.
+                        Detects card matches based on image source, allows for player to 'deselect' card by clicking it a second time.</p>
+                    <ul>
+                        <li>Client:
+                            <strong>N/A, personal project
+                            </strong>
+                        </li>
+                        <li>Date:
+                            <strong>February 2016
+                            </strong>
+                        </li>
+                        <li>Service:
+                            <strong>HTML, CSS, Bootstrap, Javascript, jQuery
+                            </strong>
+                        </li>
+                        <li>GitHub:
+                            <strong><a href="https://github.com/nbidler/memory_match">https://github.com/nbidler/memory_match.git
+                            </a></strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal5 -->
+    <div class="modal fade" id="modal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel">Tic-tac-toe</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="resources/tictactoe.png">
+                    <p>First group project, a simple Tic-Tac-Toe game. Options include a 3x3 or 5x5 grid, a choice of different player markers (that prevents players from choosing identical markers),
+                        sound effects, and a game mode option that lets players choose an unused square normally or attempt to 'steal' the other player's squares with a 65% chance of success
+                        (otherwise, the turn is wasted).</p>
+                    <ul>
+                        <li>Client:
+                            <strong>N/A, group project
+                            </strong>
+                        </li>
+                        <li>Date:
+                            <strong>February 2016
+                            </strong>
+                        </li>
+                        <li>Service:
+                            <strong>HTML, CSS, Bootstrap, Javascript, jQuery
+                            </strong>
+                        </li>
+                        <li>GitHub:
+                            <strong><a href="https://github.com/nbidler/hacka-tictactoe-athon">https://github.com/nbidler/hacka-tictactoe-athon.git
+                            </a></strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal6 -->
+    <div class="modal fade" id="modal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel">Calculator</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="resources/calculator.png">
+                    <p>A simple calculator in javascript, allowing and detecting the four basic math operations and with integer and decimal
+                        number inputs. Significant amounts of accepting alternate inputs and error-catching inputs.</p>
+                    <ul>
+                        <li>Client:
+                            <strong>N/A, personal project
+                            </strong>
+                        </li>
+                        <li>Date:
+                            <strong>March 2016
+                            </strong>
+                        </li>
+                        <li>Service:
+                            <strong>HTML, CSS, Bootstrap, Javascript, jQuery
+                            </strong>
+                        </li>
+                        <li>GitHub:
+                            <strong><a href="https://github.com/nbidler/calculator">https://github.com/nbidler/calculator.git
+                            </a></strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal7 -->
+    <div class="modal fade" id="modal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel">Grade Table</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="resources/sgt.png">
+                    <p>Another group project, this time parts of each group were shuffled around to other groups; like being reassigned from one project to another
+                        in an actual development environment. The project itself involved CRUD operations (create, read, update, delete) to and from a server,
+                        along with calculations made using the data from the server.</p>
+                    <ul class="list-inline item-details">
+                        <li>Client:
+                            <strong>N/A, group project
+                            </strong>
+                        </li>
+                        <li>Date:
+                            <strong>March 2016
+                            </strong>
+                        </li>
+                        <li>Service:
+                            <strong>Originally made with HTML, CSS, Bootstrap, Javascript, AJAX, jQuery, later version added AngularJS
+                            </strong>
+                        </li>
+                        <li>GitHub:
+                            <strong><a href="https://github.com/nbidler/SGT">https://github.com/nbidler/SGT.git
+                            </a></strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal8 -->
+    <div class="modal fade" id="modal8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel">Search by location</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="resources/searchbyclick.png">
+                    <p>A hackathon group project, with the use of APIs as the objective. Accepts a search term and a click on the map, gives back pictures from Flickr
+                        and tweets from twitter. Of note: Flickr has geotagging photos on by default and Twitter has geotagging off by default -
+                        the search system only returns results with a valid location.</p>
+                    <ul class="list-inline item-details">
+                        <li>Client:
+                            <strong>N/A, group project
+                            </strong>
+                        </li>
+                        <li>Date:
+                            <strong>March 2016
+                            </strong>
+                        </li>
+                        <li>Service:
+                            <strong>Made with HTML, CSS, Bootstrap, Javascript, AJAX, jQuery, and Google Maps/Flickr/Twitter APIs.
+                            </strong>
+                        </li>
+                        <li>GitHub:
+                            <strong><a href="https://github.com/nbidler/SGT">https://github.com/nbidler/SGT.git
+                            </a></strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal9 -->
+    <div class="modal fade" id="modal9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel">StoryPress</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="resources/storypress.png">
+                    <p>A hackathon group project, attempting integration of two teams: one for front-end and one for back-end.
+                        Users create an account, with which they can make creative writing prompts or create stories that show their prompts.
+                        Guest (account-less) users can view prompts and stories but cannot interact with them.</p>
+                    <ul class="list-inline item-details">
+                        <li>Client:
+                            <strong>N/A, group project
+                            </strong>
+                        </li>
+                        <li>Date:
+                            <strong>March 2016
+                            </strong>
+                        </li>
+                        <li>Service:
+                            <strong>Made with HTML, CSS, Bootstrap, Javascript, AJAX, jQuery, and PHP.
+                            </strong>
+                        </li>
+                        <li>GitHub:
+                            <strong><a href="https://github.com/kkennethlee/c7_blog_project">https://github.com/kkennethlee/c7_blog_project.git
+                            </a></strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

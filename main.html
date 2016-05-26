@@ -1,22 +1,20 @@
-<div>
+<div class="main" ng-mousemove="updateBGcolor($event)" style="height: 100vh; width: 100vw; background-color: rgb({{bgRed}},{{bgGrn}},{{bgBlu}});">
     <header>
         Nicholas Bidler is a dog
     </header>
-    <div id="player">
-
-    </div>
+    <!--<div id="player"></div>-->
     <div class="row info1">
-        <a data-target="#modal1">
+        <a data-target="#modal1" ng-click="modalClick(1);">
             <div class="col-sm-2 col-sm-offset-1 info">
                 About Me
             </div>
         </a>
-        <a data-target="#modal2">
+        <a data-target="#modal2" ng-click="modalClick(2);">
             <div class="col-sm-2 col-sm-offset-2 info">
                 Skills
             </div>
         </a>
-        <a data-target="#modal3">
+        <a href="#/projects" data-target="#modal3">
             <div class="col-sm-2 col-sm-offset-2 info">
                 Projects
             </div>
@@ -29,17 +27,17 @@
     </div>
 
     <div class="row info2">
-        <a data-target="#modal4">
+        <a data-target="#modal4" ng-click="modalClick(4);">
             <div class="col-sm-2 col-sm-offset-1 info">
                 Experience
             </div>
         </a>
-        <a data-target="#modal5">
+        <a data-target="#modal5" ng-click="modalClick(5);">
             <div class="col-sm-2 col-sm-offset-2 info">
                 Contact Me
             </div>
         </a>
-        <a data-target="#modal6">
+        <a data-target="#modal6" ng-click="modalClick(6);">
             <div class="col-sm-2 col-sm-offset-2 info">
                 Uh-oh.
             </div>
@@ -48,7 +46,7 @@
 
     <!-- Modal1 -->
     <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -56,14 +54,18 @@
                 </div>
                 <div class="modal-body">
                     <p>Nicholas Bidler is a man.</p>
-                    <br>
-                    <p>Man goes to college for a Computer Science degree, ends up with a History degree because he thinks he's better at it and he can still get a job with it.</p>
-                    <br>
-                    <p>Turns out man is wrong, and can only get a job in on-call medical office where emergencies are happening all the time. Man does not like this job, so decides to put nose to grindstone and give programming another shot.</p>
-                    <br>
-                    <p>Man leaves job and goes to coding boot camp to learn practical programming. 8-10-12 hour days, work on weekends, much headaches and stress-eating; but does know enough to make great web sites.</p>
-                    <br>
-                    <p>Man now knows how to program web sites, with marked preference for the functional portion instead of the artistic. Man can do artistic part just fine, would be happy to do it! Man just hoping to branch out to programs independent of internet browsers.</p>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p>Man goes to college for a Computer Science degree, ends up with a History degree because he thinks he's better at it and he can still get a job with it.</p>
+                            <br>
+                            <p>Turns out man is wrong, and can only get a job in on-call medical office where emergencies are happening all the time. Man does not like this job, so decides to put nose to grindstone and give programming another shot.</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p>Man leaves job and goes to coding boot camp to learn practical programming. 8-10-12 hour days, work on weekends, much headaches and stress-eating; but does know enough to make great web sites.</p>
+                            <br>
+                            <p>Man now knows how to program web sites, with marked preference for the functional portion instead of the artistic. Man can do artistic part just fine, would be happy to do it! Man just hoping to branch out to programs independent of internet browsers.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -94,8 +96,8 @@
             </div>
         </div>
     </div>
-    <!-- Modal3 -->
-    <div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <!-- Modal3 - currently left in 'in case' -->
+    <!--<div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -116,7 +118,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- Modal4 -->
     <div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -148,9 +150,9 @@
                 </div>
                 <div class="modal-body">
                     <ul>
-                        <li><a href="https://github.com/nbidler">Github Account Link</a></li>
-                        <li>NoManDoesTheImpossible@gmail.com</li>
-                        <li>LinkedIn Profile Link</li>
+                        <li><a href="https://github.com/nbidler"><img src="resources/GitHub.png">Github Account Link</a></li>
+                        <li><img src="resources/Gmail.png">NoManDoesTheImpossible@gmail.com</li>
+                        <li><a href="https://www.linkedin.com/in/nbidler"><img src="resources/linkedin.png">LinkedIn Profile Link</a></li>
                         <li>Contact form</li>
                         <form action="http://learningfuze.com/echo.php" method="post">
                             <input class="col-xs-11" type="text" name="inputName" placeholder="Name"
@@ -188,4 +190,5 @@
             </div>
         </div>
     </div>
+
 </div>
