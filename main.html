@@ -29,7 +29,7 @@
     <div class="row info2">
         <a data-target="#modal4" ng-click="modalClick(4);">
             <div class="col-sm-2 col-sm-offset-1 info">
-                Experience
+                Resume
             </div>
         </a>
         <a data-target="#modal5" ng-click="modalClick(5);">
@@ -101,7 +101,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style=font-family: 'arial', helvetica, sans-serif>&times;</span></button>
                     <h4 class="modal-title" id="modalLabel">Smells mossy.</h4>
                 </div>
                 <div class="modal-body">
@@ -121,7 +121,7 @@
     </div>-->
     <!-- Modal4 -->
     <div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -129,9 +129,7 @@
                 </div>
                 <div class="modal-body">
                     <ul>
-                        <li><span>Radiologist's Assistant</span> - 24/7/365 availability, process radiology studies to prepare for radiologist to examine, return finished radiology reports to facilites that sent them, maintain HIPAA standards, customer service/assistance.</li>
-                        <li><span>Delivery Driver</span> - fast, safe deliveries of flower arrangements, friendly customer/recipient interaction</li>
-                        <li><span>Data Entry</span> - historic site inventory data transfer from generic spreadsheet to museum-style inventory management program</li>
+                        <iframe src="https://docs.google.com/document/d/1JZO11s-EvLTZCM2Ur5Cp-85arUs4JrsADgOEKhyfUPE/pub?embedded=true"></iframe>
                     </ul>
                 </div>
                 <div class="modal-footer">
@@ -154,14 +152,14 @@
                         <li><img src="resources/Gmail.png">NoManDoesTheImpossible@gmail.com</li>
                         <li><a href="https://www.linkedin.com/in/nbidler"><img src="resources/linkedin.png">LinkedIn Profile Link</a></li>
                         <li>Contact form</li>
-                        <form action="http://learningfuze.com/echo.php" method="post">
+                        <form action="php_mailer/mail_withmailer.php" method="post">
                             <input class="col-xs-11" type="text" name="inputName" placeholder="Name"
-                                   required pattern="[A-Za-z]+ [A-Za-z]+"><br>
+                                   required pattern="^[A-Za-z]+ [A-Za-z]+$"><br>
                             <input class="col-xs-11" type="text" name="inputEmail" placeholder="Email"
-                                   required pattern="[A-Za-z0-9]*\.*[A-Za-z0-9]+\@[A-Za-z]+\.[A-Za-z]+"><br>
+                                   required pattern="^[A-Za-z0-9]*\.*[A-Za-z0-9]+\@[A-Za-z]+\.[A-Za-z]+$"><br>
                             <textarea class="col-xs-11" name="inputMsg" rows="4" cols="1" placeholder="Message"></textarea>
                             <br>
-                            <input class="col-xs-6" type="submit" value="Send">
+                            <button class="col-xs-6" type="submit" value="Send">Send</button>
                         </form>
                     </ul>
                 </div>

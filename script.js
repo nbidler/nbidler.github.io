@@ -10,12 +10,13 @@ var fCol = [130,0,130];
 var gCol = [130,130,0];
 var hCol = [255,0,0];
 var jCol = [50,0,200];
-var kCol = [50,200,0];
-var lCol = [0,200,50];
+var kCol = [200,0,100];
+var lCol = [100,100,100];
 
 
 //determines the boundaries of two divs on a page, determines of they overlap
 //  if so, change modal backdrop image based on which modal trigger was clicked
+/*
 function cursorHover(item, index){
 
     //the 'cursor'
@@ -70,12 +71,29 @@ function cursorHover(item, index){
         };
     }
 }
+*/
 
+// FUNCTIONS USED BY BOTH  MAIN AND PROJECTS CONTROLLERS
 function mousePos( $event ) {
     var xPos = $event.screenX;
     var yPos = $event.screenY;
     return {x: xPos, y: yPos};
-};
+}
+
+function centerPt(target){
+    //console.log(target, target.offset());
+    var targetOffset = target.offset();
+    return {
+        top: targetOffset.top + (target.height() * 2),
+        left: targetOffset.left + (target.width() / 2)
+    };
+}
+
+function findDist(targetCenter, xPos, yPos)
+{
+    return (Math.pow(targetCenter.left - xPos,2) + Math.pow(targetCenter.top - yPos,2));
+}
+// END OF FUNCTIONS USED BY BOTH  MAIN AND PROJECTS CONTROLLERS
 
 /*
 * ANGULAR ROUTES START
@@ -99,7 +117,7 @@ app.controller('routeCtrl', function($scope, routeService){
     //      centers player icon on mouse position
     $scope.currentPos = function( $event ) {
         var coords = mousePos($event);
-        if ( coords.x > $scope.xPos )
+        if ( coords.x > $scope.xPos -1 )
         {
             $scope.mouseDirect = {'cursor': 'url(resources/dogstandR.png) 32 40, auto'};
         }
@@ -135,19 +153,6 @@ app.config(function($routeProvider) {
 });
 
 app.service('mainService', function(){
-    this.centerPt = function(target){
-        //console.log(target, target.offset());
-        var targetOffset = target.offset();
-        return {
-            top: targetOffset.top + (target.height() * 2),
-            left: targetOffset.left + (target.width() / 2)
-        };
-    };
-
-    this.findDist = function(targetCenter, xPos, yPos)
-    {
-        return (Math.pow(targetCenter.left - xPos,2) + Math.pow(targetCenter.top - yPos,2));
-    }
 
     this.changeModalBG = function(targetIndex)
     {
@@ -183,7 +188,6 @@ app.service('mainService', function(){
 });
 
 app.controller('mainCtrl', function($scope, mainService) {
-    //to be continued
 
     /*
      * only have to get mouse location, don't have to get info from main controller
@@ -209,28 +213,33 @@ app.controller('mainCtrl', function($scope, mainService) {
 
     // find coordinates for the center of each button on page
     //console.log($('[data-target="#modal1"] > div'));
-    this.aFar = mainService.centerPt($('[data-target="#modal1"] > div'));
-    this.sFar = mainService.centerPt($('[data-target="#modal2"] > div'));
-    this.dFar = mainService.centerPt($('[data-target="#modal3"] > div'));
-    this.fFar = mainService.centerPt($('[data-target="#modal4"] > div'));
-    this.gFar = mainService.centerPt($('[data-target="#modal5"] > div'));
-    this.hFar = mainService.centerPt($('[data-target="#modal6"] > div'));
+    this.aFar = centerPt($('[data-target="#modal1"] > div'));
+    this.sFar = centerPt($('[data-target="#modal2"] > div'));
+    this.dFar = centerPt($('[data-target="#modal3"] > div'));
+    this.fFar = centerPt($('[data-target="#modal4"] > div'));
+    this.gFar = centerPt($('[data-target="#modal5"] > div'));
+    this.hFar = centerPt($('[data-target="#modal6"] > div'));
 
     //console.log(this.aFar, this.sFar, this.dFar, this.fFar, this.gFar, this.hFar);
 
     $scope.updateBGcolor = function ($event) {
+
+        $('.modal-dialog').hover(function() {
+            $('.modal-dialog').css('cursor', 'default');
+        });
+
         var coords = mousePos($event);
 
         $scope.xPos = coords.x;
         $scope.yPos = coords.y;
 
         //calculate distances from points (currently top-left corner of divs)
-        this.distA = mainService.findDist(self.aFar, $scope.xPos, $scope.yPos);
-        this.distS = mainService.findDist(self.sFar, $scope.xPos, $scope.yPos);
-        this.distD = mainService.findDist(self.dFar, $scope.xPos, $scope.yPos);
-        this.distF = mainService.findDist(self.fFar, $scope.xPos, $scope.yPos);
-        this.distG = mainService.findDist(self.gFar, $scope.xPos, $scope.yPos);
-        this.distH = mainService.findDist(self.hFar, $scope.xPos, $scope.yPos);
+        this.distA = findDist(self.aFar, $scope.xPos, $scope.yPos);
+        this.distS = findDist(self.sFar, $scope.xPos, $scope.yPos);
+        this.distD = findDist(self.dFar, $scope.xPos, $scope.yPos);
+        this.distF = findDist(self.fFar, $scope.xPos, $scope.yPos);
+        this.distG = findDist(self.gFar, $scope.xPos, $scope.yPos);
+        this.distH = findDist(self.hFar, $scope.xPos, $scope.yPos);
 
         //console.log(this.distA, this.distS, this.distD, this.distF, this.distG, this.distH);
 
@@ -271,7 +280,7 @@ app.controller('mainCtrl', function($scope, mainService) {
                 (1 - (this.distF / this.maxDistance) ) * fCol[1] +
                 (1 - (this.distG / this.maxDistance) ) * gCol[1] +
                 (1 - (this.distH / this.maxDistance) ) * hCol[1]
-            ) /4);
+            ) /3);
         $scope.bgBlu = Math.floor((
                 (1 - (this.distA / this.maxDistance) ) * aCol[2] +
                 (1 - (this.distS / this.maxDistance) ) * sCol[2] +
@@ -280,11 +289,6 @@ app.controller('mainCtrl', function($scope, mainService) {
                 (1 - (this.distG / this.maxDistance) ) * gCol[2] +
                 (1 - (this.distH / this.maxDistance) ) * hCol[2]
             ) /3);
-
-        //make background calculated color
-        //$('body > div').css( "background-color", "rgb(" + this.bgRed + "," + this.bgGrn + "," + this.bgBlu +")" ) ;//= [0,this.bgGrn,0]; //[this.bgRed,this.bgGrn,this.bgBlu];
-
-        //console.log($scope.bgRed, $scope.bgGrn, $scope.bgBlu);
     };
 
     $scope.modalClick = function( modalIndex )
@@ -294,23 +298,124 @@ app.controller('mainCtrl', function($scope, mainService) {
 });
 
 app.service('projService', function(){
-    this.centerPt = function(target){
-        //console.log(target, target.offset());
-        var targetOffset = target.offset();
-        return {
-            top: targetOffset.top + (target.height() * 2),
-            left: targetOffset.left + (target.width() / 2)
-        };
-    };
-
-    this.findDist = function(targetCenter, xPos, yPos)
-    {
-        return (Math.pow(targetCenter.left - xPos,2) + Math.pow(targetCenter.top - yPos,2));
-    }
+    //to be continued
 });
 
 app.controller('projCtrl', function($scope, projService){
-    //to be continued
+
+    //populating variable default values
+    var self = this;
+    $scope.xPos = 0;
+    $scope.yPos = 0;
+    $scope.maxDistance = 50000;
+    $scope.bgRed = 1;
+    $scope.bgGrn = 18;
+    $scope.bgBlu = 40;
+
+    // find coordinates for the center of each button on page
+    //console.log($('[data-target="#modal1"] > div'));
+    this.aFar = centerPt($('[data-target="#modal1"] > div'));
+    this.sFar = centerPt($('[data-target="#modal2"] > div'));
+    this.dFar = centerPt($('[data-target="#modal3"] > div'));
+    this.fFar = centerPt($('[data-target="#modal4"] > div'));
+    this.gFar = centerPt($('[data-target="#modal5"] > div'));
+    this.hFar = centerPt($('[data-target="#modal6"] > div'));
+    this.jFar = centerPt($('[data-target="#modal7"] > div'));
+    this.kFar = centerPt($('[data-target="#modal8"] > div'));
+    this.lFar = centerPt($('[data-target="#modal9"] > div'));
+
+    //console.log(this.aFar, this.sFar, this.dFar, this.fFar, this.gFar, this.hFar);
+
+    $scope.updateBGcolor = function ($event) {
+
+        $('.modal-dialog').hover(function() {
+            $('.modal-dialog').css('cursor', 'default');
+        });
+
+        var coords = mousePos($event);
+
+        $scope.xPos = coords.x;
+        $scope.yPos = coords.y;
+
+        //calculate distances from points (currently top-left corner of divs)
+        this.distA = findDist(self.aFar, $scope.xPos, $scope.yPos);
+        this.distS = findDist(self.sFar, $scope.xPos, $scope.yPos);
+        this.distD = findDist(self.dFar, $scope.xPos, $scope.yPos);
+        this.distF = findDist(self.fFar, $scope.xPos, $scope.yPos);
+        this.distG = findDist(self.gFar, $scope.xPos, $scope.yPos);
+        this.distH = findDist(self.hFar, $scope.xPos, $scope.yPos);
+        this.distJ = findDist(self.jFar, $scope.xPos, $scope.yPos);
+        this.distK = findDist(self.kFar, $scope.xPos, $scope.yPos);
+        this.distL = findDist(self.lFar, $scope.xPos, $scope.yPos);
+
+
+        //console.log(this.distA, this.distS, this.distD, this.distF, this.distG, this.distH);
+
+        //if past a certain amount of distance, give no weight to that color
+        if (this.distA > $scope.maxDistance) {
+            this.distA = $scope.maxDistance;
+        }
+        if (this.distS > $scope.maxDistance) {
+            this.distS = $scope.maxDistance;
+        }
+        if (this.distD > $scope.maxDistance) {
+            this.distD = $scope.maxDistance;
+        }
+        if (this.distF > $scope.maxDistance) {
+            this.distF = $scope.maxDistance;
+        }
+        if (this.distG > $scope.maxDistance) {
+            this.distG = $scope.maxDistance;
+        }
+        if (this.distH > $scope.maxDistance) {
+            this.distH = $scope.maxDistance;
+        }
+        if (this.distJ > $scope.maxDistance) {
+            this.distJ = $scope.maxDistance;
+        }
+        if (this.distK > $scope.maxDistance) {
+            this.distK = $scope.maxDistance;
+        }
+        if (this.distL > $scope.maxDistance) {
+            this.distL = $scope.maxDistance;
+        }
+        //console.log(this.distA);
+
+        //turn smaller distance into greater color 'weight'
+        $scope.bgRed = Math.floor((
+                (1 - (this.distA / this.maxDistance) ) * aCol[0] +
+                (1 - (this.distS / this.maxDistance) ) * sCol[0] +
+                (1 - (this.distD / this.maxDistance) ) * dCol[0] +
+                (1 - (this.distF / this.maxDistance) ) * fCol[0] +
+                (1 - (this.distG / this.maxDistance) ) * gCol[0] +
+                (1 - (this.distH / this.maxDistance) ) * hCol[0] +
+                (1 - (this.distJ / this.maxDistance) ) * jCol[0] +
+                (1 - (this.distK / this.maxDistance) ) * kCol[0] +
+                (1 - (this.distL / this.maxDistance) ) * lCol[0]
+            ) /3);
+        $scope.bgGrn = Math.floor((
+                (1 - (this.distA / this.maxDistance) ) * aCol[1] +
+                (1 - (this.distS / this.maxDistance) ) * sCol[1] +
+                (1 - (this.distD / this.maxDistance) ) * dCol[1] +
+                (1 - (this.distF / this.maxDistance) ) * fCol[1] +
+                (1 - (this.distG / this.maxDistance) ) * gCol[1] +
+                (1 - (this.distH / this.maxDistance) ) * hCol[1] +
+                (1 - (this.distJ / this.maxDistance) ) * jCol[1] +
+                (1 - (this.distK / this.maxDistance) ) * kCol[1] +
+                (1 - (this.distL / this.maxDistance) ) * lCol[1]
+            ) /3);
+        $scope.bgBlu = Math.floor((
+                (1 - (this.distA / this.maxDistance) ) * aCol[2] +
+                (1 - (this.distS / this.maxDistance) ) * sCol[2] +
+                (1 - (this.distD / this.maxDistance) ) * dCol[2] +
+                (1 - (this.distF / this.maxDistance) ) * fCol[2] +
+                (1 - (this.distG / this.maxDistance) ) * gCol[2] +
+                (1 - (this.distH / this.maxDistance) ) * hCol[2] +
+                (1 - (this.distJ / this.maxDistance) ) * jCol[2] +
+                (1 - (this.distK / this.maxDistance) ) * kCol[2] +
+                (1 - (this.distL / this.maxDistance) ) * lCol[2]
+            ) /3);
+    };
 });
 
 /*
